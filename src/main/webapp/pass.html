@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Password Form</title>
+    <style>#form{margin:auto; display:  flex ; margin: 2;padding-left: 2;}</style>
+    <script>
+        function comparePasswords() {
+            var pass = document.getElementById('password').value;
+            var confirmPass = document.getElementById('confirmPassword').value;
+            var match = document.getElementById('matching-txt');
+            var submitButton = document.getElementById('submitButton');
+
+            if (!confirmPass) {
+                submitButton.disabled = true;
+                return;
+            }
+
+            if (pass !== confirmPass) {
+                submitButton.style.backgroundColor ='red';
+                submitButton.disabled = true;
+            } else {
+
+                submitButton.style.backgroundColor = 'green';
+                submitButton.disabled = false;
+            }
+            match.style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+	<h1>Passwords Match</h1>
+    <form action="Passwords" method="post" id="form">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" oninput="comparePasswords()" required><br>
+
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" oninput="comparePasswords()" required><br>
+
+        <button type="submit" id="submitButton" disabled>Submit</button>
+    </form>
+</body>
+</html>
